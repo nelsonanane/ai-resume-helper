@@ -43,7 +43,8 @@ export function ColorPicker() {
           <RadioGroupItem
             value={item.value}
             id={item.id}
-            className={`bg-[${item.value}]`}
+            // className={`bg-[${item.value}]`}
+            style={{backgroundColor: item.value}}
           />
         </div>
       ))}

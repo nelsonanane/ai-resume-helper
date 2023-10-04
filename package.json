@@ -26,6 +26,8 @@
     "next-themes": "^0.2.1",
     "react": "latest",
     "react-dom": "latest",
+    "react-to-print": "^2.14.15",
+    "short-uuid": "^4.2.2",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.4.2"

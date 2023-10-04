@@ -9,7 +9,7 @@ function ContactInfo({}: Props) {
 
   return (
     <div>
-      <Badge className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}>
+      <Badge className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`} style={{backgroundColor: state.color}}>
         ABOUT ME
       </Badge>
       <div>

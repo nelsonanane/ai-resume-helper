@@ -11,7 +11,7 @@ function ContactInfo({}: Props) {
 
   return (
     <div>
-      <Badge className={cn(`p-6 pt-1 pb-1 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`)}>
+      <Badge className={cn(`p-6 pt-1 pb-1 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`)} style={{backgroundColor: state.color}}>
         CONTACT
       </Badge>
       <div className="mt-3 flex gap-1 flex-col">

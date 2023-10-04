@@ -31,6 +31,7 @@ export default function SideSection({}: Props) {
         <Avatar
           className="w-[120px] h-[120px] absolute mt-[-20px] ml-[-60px] cursor-pointer" 
           onClick={openFileExplorer}
+          id="avatar"
         >
           <AvatarImage src={URL.createObjectURL(image)} /> 
         </Avatar>
@@ -39,6 +40,7 @@ export default function SideSection({}: Props) {
           <div
             className="w-[120px] h-[120px] absolute mt-[-20px] ml-[-60px] rounded-[50%] bg-neutral-400 cursor-pointer grid place-content-center"
             onClick={openFileExplorer}
+            id="image-select"
           >
             <div className="flex flex-col items-center">
               <CameraIcon className="w-[30px] h-[30px] align-middle stroke-gray-200" />{" "}
@@ -52,6 +54,7 @@ export default function SideSection({}: Props) {
         id="inputfoto2"
         accept="image/*"
         className="hidden"
+        value={''}
         ref={ref}
         onChange={setProfilePic}
       />
@@ -78,12 +81,14 @@ export default function SideSection({}: Props) {
       <div className="mt-[6rem] ml-[3rem]">
         <Badge
           className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+          style={{backgroundColor: state.color}}
         >
           EDUCATION
         </Badge>
         <div className="flex gap-2 justify-center mb-5">
           <div
             className={`w-[10px] h-[10px] bg-[${state.color}] rounded-[50%] ml-[-23px] z-10 mt-[16px]`}
+            style={{backgroundColor: state.color}}
           />
           <div className="mt-2">
             <p
@@ -123,6 +128,7 @@ export default function SideSection({}: Props) {
         <div className="flex gap-2 justify-center mb-5">
           <div
             className={`w-[10px] h-[10px] bg-[${state.color}] rounded-[50%] ml-[-23px] z-10 mt-[16px]`}
+            style={{backgroundColor: state.color}}
           />
           <div className="mt-2">
             <p
@@ -162,6 +168,7 @@ export default function SideSection({}: Props) {
         <div>
           <Badge
             className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+            style={{backgroundColor: state.color}}
           >
             SKILLS
           </Badge>

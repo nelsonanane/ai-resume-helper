@@ -13,8 +13,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import OpenIcon from "./Assets/Icons/OpenIcon";
-import SaveIcon from "./Assets/Icons/SaveIcon";
+import OpenIcon from "./assets/Icons/OpenIcon";
+import SaveIcon from "./assets/Icons/SaveIcon";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import { ColorPicker } from "./common/ColorPicker";
 import FontInput from "./common/FontInput";
@@ -63,7 +63,7 @@ const components: { id: number; title: string; component: any }[] = [
   },
 ];
 
-export default function Navigator() {
+export default function Navigator({onDownload}:any) {
   return (
     <div className="flex justify-center mt-5 sticky top-0 bg-white z-50">
       <NavigationMenu>
@@ -132,7 +132,7 @@ export default function Navigator() {
               </div>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem className="cursor-pointer">
+          <NavigationMenuItem className="cursor-pointer" onClick={onDownload}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <div className="flex justify-center gap-1.5">
                 <DownloadIcon className={IconClass} />

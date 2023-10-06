@@ -6,5 +6,5 @@ export const useConfiguration = create((set) => ({
   fontSize: "16px",
   setColor: (color: string) => set((state: any) => ({ color })),
   setFont: (font: string) => set((state: any) => ({ font })),
-  setFontSize: (size: string) => set({ fontSize: size }),
+  setFontSize: (size: string) => set({ fontSize: size }), 
 }));

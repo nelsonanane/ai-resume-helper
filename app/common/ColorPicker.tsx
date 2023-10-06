@@ -2,7 +2,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import { Input } from "@/components/ui/input";
-import PenIcon from "../Assets/Icons/PenIcon";
+import PenIcon from "../assets/Icons/PenIcon";
 import { useConfiguration } from "../store/useConfiguration";
 
 const radioItems = [

@@ -3,55 +3,30 @@ import { Badge } from "@/components/ui/badge";
 import { useConfiguration } from "../store/useConfiguration";
 import { Separator } from "@/components/ui/separator";
 import ExperienceComponent from "./ExperienceComponent";
-import short from 'short-uuid'
+import { useResumeData } from "../store/useResumeData";
 
 type Props = {};
 
-// const experiences = [
-//   {
-//       id: 1,
-//       jobDatePeriod: "From - Until",
-//       jobTitle: "Enter your job title here",
-//       company: "Enter company name",
-//       location: "Enter company location",
-//       description: "Enter your work experience description. Provide details that showcase how you were able to contribute and add value. Focus on responsibilities that are relevant to the job you are applying for. If you need help writing your work experience description, you can use the AI Writing Assistant."
-//   },
-// ]
-
 function ExperienceSection({}: Props) {
-  const [experiences, setExperiences] = useState<any>([{
-    id: 1,
-    jobDatePeriod: "From - Until",
-    jobTitle: "Enter your job title here",
-    company: "Enter company name",
-    location: "Enter company location",
-    description: "Enter your work experience description. Provide details that showcase how you were able to contribute and add value. Focus on responsibilities that are relevant to the job you are applying for. If you need help writing your work experience description, you can use the AI Writing Assistant."
-}])
   const state = useConfiguration((state: any) => state);
+  const { experiences, addExperience, removeExperience, setExperience } =
+    useResumeData<any>((state: any) => state);
+  const resume = useResumeData<any>((state: any) => state);
 
-  console.log(experiences)
+  const clickHandler = (step: string, id: string) => {
+    if (step === "plus") {
+      addExperience();
+    }
+    if (step === "remove") {
+      removeExperience(id);
+    }
+    if (step === "drag") {
+      console.log("drag experience");
+    }
+  };
 
-  const clickHandler = (step: string, id: string) => { 
-    if(step === "plus") {
-      setExperiences([...experiences, {
-        id: experiences.length + 1,
-        jobDatePeriod: "From - Until",
-        jobTitle: "Enter your job title here",
-        company: "Enter company name",
-        location: "Enter company location",
-        description: "Enter your work experience description. Provide details that showcase how you were able to contribute and add value. Focus on responsibilities that are relevant to the job you are applying for. If you need help writing your work experience description, you can use the AI Writing Assistant."
-    }]);
-    }
-    if(step === "remove") {
-      console.log('id', id);
-      setExperiences(experiences.filter((item:any) => item.id !== +id))
-    }
-    if(step === "drag") {
-      console.log('drag experience')
-    }
-  }
-
-  console.log('experiences', experiences)
+  console.log("experiences", experiences);
+  console.log("resume", resume);
 
   return (
     <div>
@@ -62,11 +37,22 @@ function ExperienceSection({}: Props) {
         EXPERIENCE
       </Badge>
       <div>
-        {
-          experiences.map((item:any) => (
-            <ExperienceComponent state={state} experience={item} key={item.id} clickHandler={clickHandler}/> 
-          ))
-        }
+        {experiences?.map((item: any) => (
+          <ExperienceComponent
+            state={state}
+            experience={item}
+            key={item.id}
+            clickHandler={clickHandler}
+            onBlur={(e: any, field: string) => { 
+                  const index = experiences.findIndex(
+                    (x: any) => x.id === item.id
+                  );
+                  experiences[index][field] = e.target.innerHTML;
+              
+              console.log(resume)
+            }}
+          />
+        ))}
       </div>
     </div>
   );

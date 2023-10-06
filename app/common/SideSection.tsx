@@ -4,6 +4,9 @@ import { useConfiguration } from "../store/useConfiguration";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { CameraIcon } from "@radix-ui/react-icons";
+import EducationComponent from "./EducationComponent";
+import { useResumeData } from "../store/useResumeData";
+import PlusIcon from "../assets/Icons/PlusIcon";
 
 type Props = {};
 
@@ -11,9 +14,24 @@ export default function SideSection({}: Props) {
   const [image, setImage] = useState<any>();
   const state = useConfiguration((state: any) => state);
   const ref = useRef<HTMLInputElement>(null);
+  const resume = useResumeData<any>((state: any) => state?.resume);
+  const { colleges, addEducation, removeEducation, setContact } =
+    useResumeData<any>((state: any) => state);
+
+  const clickHandler = (step: string, id: number) => {
+    if (step === "plus") {
+      addEducation();
+    }
+    if (step === "remove") {
+      removeEducation(id);
+    }
+    if (step === "drag") {
+      console.log("drag experience");
+    }
+  };
 
   const openFileExplorer = () => {
-    console.log('something should be open')
+    console.log("something should be open");
     ref && ref.current && ref.current.click();
   };
 
@@ -29,11 +47,11 @@ export default function SideSection({}: Props) {
     <div>
       {image ? (
         <Avatar
-          className="w-[120px] h-[120px] absolute mt-[-20px] ml-[-60px] cursor-pointer" 
+          className="w-[120px] h-[120px] absolute mt-[-20px] ml-[-60px] cursor-pointer"
           onClick={openFileExplorer}
           id="avatar"
         >
-          <AvatarImage src={URL.createObjectURL(image)} /> 
+          <AvatarImage src={URL.createObjectURL(image)} />
         </Avatar>
       ) : (
         <>
@@ -54,7 +72,7 @@ export default function SideSection({}: Props) {
         id="inputfoto2"
         accept="image/*"
         className="hidden"
-        value={''}
+        value={""}
         ref={ref}
         onChange={setProfilePic}
       />
@@ -65,113 +83,55 @@ export default function SideSection({}: Props) {
             className="px-1 text-3xl font-light"
             contentEditable
             placeholder="First Name"
+            onBlur={(e: any) => setContact(e.target.innerHTML, "firstName")}
           ></p>
           <p
             className="px-1 text-3xl font-bold"
             contentEditable
             placeholder="Last Name"
+            onBlur={(e: any) => setContact(e.target.innerHTML, "lastName")}
           ></p>
         </div>
         <p
           contentEditable
           placeholder="Enter your profession"
           className="px-1 text-lg font-medium"
+          onBlur={(e: any) => setContact(e.target.innerHTML, "profession")}
         ></p>
       </div>
       <div className="mt-[6rem] ml-[3rem]">
         <Badge
           className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
-          style={{backgroundColor: state.color}}
+          style={{ backgroundColor: state.color }}
         >
           EDUCATION
         </Badge>
-        <div className="flex gap-2 justify-center mb-5">
-          <div
-            className={`w-[10px] h-[10px] bg-[${state.color}] rounded-[50%] ml-[-23px] z-10 mt-[16px]`}
-            style={{backgroundColor: state.color}}
+
+        {colleges.map((col: any) => (
+          <EducationComponent
+            key={col.id}
+            education={col}
+            clickHandler={clickHandler}
+            onBlur={(e: any, field: string) => {
+              const index = colleges.findIndex((x: any) => x.id === col.id);
+              colleges[index][field] = e.target.innerHTML;
+
+              console.log(resume);
+            }}
           />
-          <div className="mt-2">
-            <p
-              contentEditable
-              placeholder="Enter your degree"
-              className="px-1 mb-1 font-semibold text-lg"
-            ></p>
-            <div className="border-l-2 ml-[-15px] h-[90%]">
-              <div className="ml-[15px]">
-                <p
-                  contentEditable
-                  placeholder="Enter your major"
-                  className="px-1 mb-1 text-zinc-600 font-medium"
-                ></p>
-                <div className="flex gap-2">
-                  <p
-                    contentEditable
-                    placeholder="Enter your university"
-                    className="px-1 mb-1 font-light"
-                  ></p>
-                  <div className="border-2 h-[15px] self-center"></div>
-                  <p
-                    contentEditable
-                    placeholder="Enter the location"
-                    className="px-1 mb-1 font-light"
-                  ></p>
-                </div>
-                <p
-                  className="p-1 w-[150px] h-[30px]"
-                  contentEditable
-                  placeholder="From - Until"
-                ></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex gap-2 justify-center mb-5">
-          <div
-            className={`w-[10px] h-[10px] bg-[${state.color}] rounded-[50%] ml-[-23px] z-10 mt-[16px]`}
-            style={{backgroundColor: state.color}}
-          />
-          <div className="mt-2">
-            <p
-              contentEditable
-              placeholder="Enter your degree"
-              className="px-1 mb-1 font-semibold text-lg"
-            ></p>
-            <div className="border-l-2 ml-[-15px]">
-              <div className="ml-[15px]">
-                <p
-                  contentEditable
-                  placeholder="Enter your major"
-                  className="px-1 mb-1 text-zinc-600 font-medium"
-                ></p>
-                <div className="flex gap-2">
-                  <p
-                    contentEditable
-                    placeholder="Enter your university"
-                    className="px-1 mb-1 font-light"
-                  ></p>
-                  <div className="border-2 h-[15px] self-center"></div>
-                  <p
-                    contentEditable
-                    placeholder="Enter the location"
-                    className="px-1 mb-1 font-light"
-                  ></p>
-                </div>
-                <p
-                  className="p-1 w-[150px] h-[30px]"
-                  contentEditable
-                  placeholder="From - Until"
-                ></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
         <div>
-          <Badge
-            className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
-            style={{backgroundColor: state.color}}
-          >
-            SKILLS
-          </Badge>
+          <div className="flex">
+            <Badge
+              className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+              style={{ backgroundColor: state.color }}
+            >
+              SKILLS
+            </Badge>
+            <div>
+              <PlusIcon className="" stroke="white" fill="black" />
+            </div>
+          </div>
           <div className="mt-3">
             <p
               contentEditable

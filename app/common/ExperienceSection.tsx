@@ -4,6 +4,8 @@ import { useConfiguration } from "../store/useConfiguration";
 import { Separator } from "@/components/ui/separator";
 import ExperienceComponent from "./ExperienceComponent";
 import { useResumeData } from "../store/useResumeData";
+import PlusIcon from "../assets/Icons/PlusIcon";
+import IconContainer from "../assets/Icons/IconContainer";
 
 type Props = {};
 
@@ -29,13 +31,16 @@ function ExperienceSection({}: Props) {
   console.log("resume", resume);
 
   return (
-    <div>
-      <Badge
-        className={`mt-10 p-6 pt-1 pb-1 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
-        style={{ backgroundColor: state.color }}
-      >
-        EXPERIENCE
-      </Badge>
+    <div className="mt-10 ">
+      <div className="flex gap-4 w-full items-center">
+        <Badge
+          className={`p-6 pt-1 pb-1 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+          style={{ backgroundColor: state.color }}
+        >
+          EXPERIENCE
+        </Badge>
+        <IconContainer icon={PlusIcon} onClick={addExperience} />
+      </div>
       <div>
         {experiences?.map((item: any) => (
           <ExperienceComponent
@@ -43,13 +48,11 @@ function ExperienceSection({}: Props) {
             experience={item}
             key={item.id}
             clickHandler={clickHandler}
-            onBlur={(e: any, field: string) => { 
-                  const index = experiences.findIndex(
-                    (x: any) => x.id === item.id
-                  );
-                  experiences[index][field] = e.target.innerHTML;
-              
-              console.log(resume)
+            onBlur={(e: any, field: string) => {
+              const index = experiences.findIndex((x: any) => x.id === item.id);
+              experiences[index][field] = e.target.innerHTML;
+
+              console.log(resume);
             }}
           />
         ))}

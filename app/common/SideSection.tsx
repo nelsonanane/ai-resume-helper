@@ -7,16 +7,26 @@ import { CameraIcon } from "@radix-ui/react-icons";
 import EducationComponent from "./EducationComponent";
 import { useResumeData } from "../store/useResumeData";
 import PlusIcon from "../assets/Icons/PlusIcon";
+import CrossIcon from "../assets/Icons/RemoveIcon";
+import IconContainer from "../assets/Icons/IconContainer";
 
 type Props = {};
 
 export default function SideSection({}: Props) {
-  const [image, setImage] = useState<any>();
   const state = useConfiguration((state: any) => state);
   const ref = useRef<HTMLInputElement>(null);
   const resume = useResumeData<any>((state: any) => state?.resume);
-  const { colleges, addEducation, removeEducation, setContact } =
-    useResumeData<any>((state: any) => state);
+  const {
+    colleges,
+    addEducation,
+    removeEducation,
+    setContact,
+    skills,
+    addSkill,
+    image,
+    setImage,
+    removeSkill,
+  } = useResumeData<any>((state: any) => state);
 
   const clickHandler = (step: string, id: number) => {
     if (step === "plus") {
@@ -100,13 +110,15 @@ export default function SideSection({}: Props) {
         ></p>
       </div>
       <div className="mt-[6rem] ml-[3rem]">
-        <Badge
-          className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
-          style={{ backgroundColor: state.color }}
-        >
-          EDUCATION
-        </Badge>
-
+        <div className="flex gap-4 w-full items-center">
+          <Badge
+            className={`p-6 py-1 my-2 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+            style={{ backgroundColor: state.color }}
+          >
+            EDUCATION
+          </Badge>
+          <IconContainer icon={PlusIcon} onClick={addEducation} />
+        </div>
         {colleges.map((col: any) => (
           <EducationComponent
             key={col.id}
@@ -120,68 +132,40 @@ export default function SideSection({}: Props) {
             }}
           />
         ))}
-        <div>
-          <div className="flex">
+        <div className="mt-10">
+          <div className="flex gap-4 w-full items-center">
             <Badge
-              className={`p-6 py-1 my-2 mt-10 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+              className={`p-6 py-1 my-2 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
               style={{ backgroundColor: state.color }}
             >
               SKILLS
             </Badge>
             <div>
-              <PlusIcon className="" stroke="white" fill="black" />
+            <IconContainer icon={PlusIcon} onClick={addSkill} />
             </div>
           </div>
-          <div className="mt-3">
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              ReactJS
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              CSS/HTML5
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              Jenkins
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              Git
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              NodeJS
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              Javascript
-            </p>
-            <p
-              contentEditable
-              placeholder="Enter your major"
-              className="px-1 mb-1 text-zinc-600 font-medium"
-            >
-              Java
-            </p>
+          <div className="mt-3 auto-rows-min">
+            {skills.map((skill: any, index: number) => (
+              <div key={index} className="flex">
+                <p
+                  contentEditable
+                  placeholder="Enter skill"
+                  className="px-1 mb-1 text-zinc-600 font-medium"
+                  onBlur={(e: any) => {
+                    skills[index] = e.target.innerHTML;
+                  }}
+                >
+                  {skill}
+                </p>
+                <div onClick={() => removeSkill(index)}>
+                  <CrossIcon
+                    className="cursor-pointer self-center"
+                    stroke="white"
+                    fill="black"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

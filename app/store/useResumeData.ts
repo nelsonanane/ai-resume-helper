@@ -77,4 +77,15 @@ export const useResumeData = create((set) => ({
       ...state,
       colleges: state.colleges.filter((col: any) => col.id !== id),
     })),
+  addSkill: () =>
+    set((state: any) => ({
+      ...state,
+      ...state.skills.push(""),
+    })),
+  removeSkill: (index: any) =>
+    set((state: any) => ({
+        ...state,
+        ...state.skills.splice(index, 1)
+    })),
+  setImage: (image: any) => set((state: any) => ({ image })),
 }));

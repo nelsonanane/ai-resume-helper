@@ -55,6 +55,8 @@ export const useResumeData = create((set) => ({
       location: "",
     }),
   ],
+  suggestions: {},
+  setSuggestions: (suggestions: number) => set((state: any) => ({suggestions})),
   setContact: (value: number, key: string) =>
     set((state: any) => ({
       ...state,

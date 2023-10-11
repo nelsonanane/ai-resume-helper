@@ -1,12 +1,13 @@
 
 import short from "short-uuid";
+import { DescriptionItem } from "./DescriptionItem";
 
 export type Props = { 
     duration: string;
     title: string;
     company: string;
     location: string;
-    description: string;
+    description: DescriptionItem[];
 }
 
 export class ExperienceModel {
@@ -15,7 +16,7 @@ export class ExperienceModel {
     title: string;
     company: string;
     location: string;
-    description: string;
+    description: DescriptionItem[];
 
     constructor({duration, title, company, location, description}:Props) {
         this.id = short.generate();

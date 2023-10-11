@@ -6,6 +6,8 @@ import ExperienceComponent from "./ExperienceComponent";
 import { useResumeData } from "../store/useResumeData";
 import PlusIcon from "../assets/Icons/PlusIcon";
 import IconContainer from "../assets/Icons/IconContainer";
+import { ACTION_OPTIONS } from "./SideSection";
+import { openai } from "@/lib/openaiConfig";
 
 type Props = {};
 
@@ -15,15 +17,31 @@ function ExperienceSection({}: Props) {
     useResumeData<any>((state: any) => state);
   const resume = useResumeData<any>((state: any) => state);
 
-  const clickHandler = (step: string, id: string) => {
-    if (step === "plus") {
-      addExperience();
-    }
-    if (step === "remove") {
-      removeExperience(id);
-    }
-    if (step === "drag") {
-      console.log("drag experience");
+  const clickHandler = async (step: string, id: string) => {
+    switch (step) {
+      case ACTION_OPTIONS.PLUS:
+        addExperience();
+        break;
+      case ACTION_OPTIONS.REMOVE:
+        removeExperience(id);
+        break;
+      case ACTION_OPTIONS.DRAG:
+        console.log("drag experience");
+        break;
+      case ACTION_OPTIONS.ASSISTANT:
+        // const title = experiences[0].title
+        // const response = await fetch("api/openaicompletion", {
+        //   method: "POST", 
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify(title),
+        // });
+        // console.log("response", await response.json());
+
+        break;
+      default:
+        console.log("NO ACTION TAKEN");
     }
   };
 
@@ -42,7 +60,7 @@ function ExperienceSection({}: Props) {
         <IconContainer icon={PlusIcon} onClick={addExperience} />
       </div>
       <div>
-        {experiences?.map((item: any) => (
+        {experiences?.map((item: any, index: number) => (
           <ExperienceComponent
             state={state}
             experience={item}
@@ -51,9 +69,8 @@ function ExperienceSection({}: Props) {
             onBlur={(e: any, field: string) => {
               const index = experiences.findIndex((x: any) => x.id === item.id);
               experiences[index][field] = e.target.innerHTML;
-
-              console.log(resume);
             }}
+            experienceIndex={index}
           />
         ))}
       </div>

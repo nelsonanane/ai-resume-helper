@@ -1,6 +1,28 @@
 import { create } from "zustand";
 import { ExperienceModel } from "../models/ExperienceModel";
 import { EducationModel } from "../models/EducationModel";
+import { DescriptionItem } from "../models/DescriptionItem";
+
+const defaultDescriptionItems = [
+  new DescriptionItem({
+    value: "",
+    placeholder: "Enter your work experience description here.",
+  }),
+  new DescriptionItem({
+    value: "",
+    placeholder: "Provide details that showcase how you added value.",
+  }),
+  new DescriptionItem({
+    value: "",
+    placeholder:
+      "Focus on responsibilities that are relevant to the job you are applying for.",
+  }),
+  new DescriptionItem({
+    value: "",
+    placeholder:
+      "If you need help writing your work experience description, you can use the AI Writing Assistant.",
+  }),
+];
 
 export const useResumeData = create((set) => ({
   contact: {
@@ -19,7 +41,7 @@ export const useResumeData = create((set) => ({
       title: "",
       company: "",
       location: "",
-      description: "",
+      description: defaultDescriptionItems,
     }),
   ],
   skills: [],
@@ -48,7 +70,26 @@ export const useResumeData = create((set) => ({
           title: "",
           company: "",
           location: "",
-          description: "",
+          description: [
+            new DescriptionItem({
+              value: "",
+              placeholder: "Enter your work experience description here.",
+            }),
+            new DescriptionItem({
+              value: "",
+              placeholder: "Provide details that showcase how you added value.",
+            }),
+            new DescriptionItem({
+              value: "",
+              placeholder:
+                "Focus on responsibilities that are relevant to the job you are applying for.",
+            }),
+            new DescriptionItem({
+              value: "",
+              placeholder:
+                "If you need help writing your work experience description, you can use the AI Writing Assistant.",
+            }),
+          ],
         })
       ),
     })),
@@ -84,8 +125,26 @@ export const useResumeData = create((set) => ({
     })),
   removeSkill: (index: any) =>
     set((state: any) => ({
-        ...state,
-        ...state.skills.splice(index, 1)
+      ...state,
+      ...state.skills.splice(index, 1),
     })),
   setImage: (image: any) => set((state: any) => ({ image })),
+  addParagraph: (experienceIndex: number) =>
+    set((state: any) => ({
+      ...state,
+      ...state.experiences[experienceIndex]?.description.push(
+        new DescriptionItem({
+          value: "",
+          placeholder: "Enter your work experience description here.",
+        })
+      ),
+    })),
+  removeParagraph: (experienceIndex: number, descriptionIndex: number) =>
+    set((state: any) => ({
+      ...state.experiences,
+      ...state.experiences[experienceIndex]?.description.splice(
+        descriptionIndex,
+        1
+      ),
+    })),
 }));

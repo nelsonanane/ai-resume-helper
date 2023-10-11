@@ -12,6 +12,13 @@ import IconContainer from "../assets/Icons/IconContainer";
 
 type Props = {};
 
+export const ACTION_OPTIONS = {
+  REMOVE: "remove",
+  ASSISTANT: "assistant",
+  PLUS: "plus",
+  DRAG: "drag",
+};
+
 export default function SideSection({}: Props) {
   const state = useConfiguration((state: any) => state);
   const ref = useRef<HTMLInputElement>(null);
@@ -28,15 +35,19 @@ export default function SideSection({}: Props) {
     removeSkill,
   } = useResumeData<any>((state: any) => state);
 
-  const clickHandler = (step: string, id: number) => {
-    if (step === "plus") {
-      addEducation();
-    }
-    if (step === "remove") {
-      removeEducation(id);
-    }
-    if (step === "drag") {
-      console.log("drag experience");
+  const clickHandler = (step: string, id: number) => { 
+    switch (step) {
+      case ACTION_OPTIONS.PLUS:
+        addEducation();
+        break;
+      case ACTION_OPTIONS.REMOVE:
+        removeEducation(id);
+        break;
+      case ACTION_OPTIONS.DRAG:
+        console.log("drag experience");
+        break; 
+      default:
+        console.log("NO ACTION TAKEN");
     }
   };
 
@@ -141,7 +152,7 @@ export default function SideSection({}: Props) {
               SKILLS
             </Badge>
             <div>
-            <IconContainer icon={PlusIcon} onClick={addSkill} />
+              <IconContainer icon={PlusIcon} onClick={addSkill} />
             </div>
           </div>
           <div className="mt-3 auto-rows-min">

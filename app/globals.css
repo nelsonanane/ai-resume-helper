@@ -86,16 +86,16 @@
  transition: .1s background linear;
   -webkit-user-select: text;
   user-select: text;
+  padding: 2px 2px;
 }
 
 [contenteditable=true]:hover {
   border: 1px dashed #AAA;    
 }
 
-[contenteditable=true]:focus {
-  border: 1px dashed #AAA;  
-  background: rgba(128, 128, 128, 0.2);
-  border-radius: 0.5rem;
+[contenteditable=true]:focus { 
+  background: rgba(128, 128, 128, 0.2); 
   outline: none;
+  padding: 2px 2px;
 
 } 

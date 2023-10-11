@@ -5,19 +5,26 @@ import DragIcon from "../assets/Icons/DragIcon";
 import IconContainer from "../assets/Icons/IconContainer";
 import RemoveIcon from "../assets/Icons/RemoveIcon";
 import ControlsIconGroup from "./ControlsIconGroup";
+import { DescriptionItem } from "../models/DescriptionItem";
+import JobDescParagraphItem from "./JobDescParagraphItem";
+import { Button } from "@/components/ui/button";
+import { useResumeData } from "../store/useResumeData";
+import { ExperienceModel } from "../models/ExperienceModel";
 
-type Props = {
-  color: string;
-  font: string;
-  fontSize: string;
-  setColor: Function;
-  setFont: Function;
-  setFontSize: Function;
+type Props = { 
+  state: {color:string};
+  experience: ExperienceModel;
+  onBlur: (e: any, step:string) => void;
+  clickHandler: (step:string, id:any) => void;
+  experienceIndex: number;
 };
 
-function ExperienceComponent({ state, experience, clickHandler, onBlur }: any) {
+function ExperienceComponent({ state, experience, clickHandler, onBlur, experienceIndex }: Props) {
   const [showIcons, setShowIcons] = useState(false);
-  const [showParagraphControls, setParagraphControls] = useState(false);
+  const [showAddParagraph, setShowAddParagraph] = useState(false);
+  const { addParagraph, removeParagraph } = useResumeData<any>((state: any) => state);
+
+  console.log("experience", experience);
 
   console.log(showIcons);
   return (
@@ -30,6 +37,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur }: any) {
         className={`${!showIcons && "hidden"}`}
         onClick={clickHandler}
         id={experience.id}
+        withAIAssistant
       />
       <div className="flex gap-3 mt-5">
         <p
@@ -66,103 +74,36 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur }: any) {
               ></p>
             </div>
             <div
-              contentEditable
+              //   contentEditable
               placeholder="Enter your work experience description. Provide details that showcase how you were able to contribute and add value. Focus on responsibilities that are relevant to the job you are applying for. If you need help writing your work experience description, you can use the AI Writing Assistant."
-              className="p-1 w-[520px]"
-              onBlur={(e) => onBlur(e, "description")}
+              className="p-1 w-[520px] relative"
+              //   onBlur={(e) => onBlur(e, "description")}
+              onMouseEnter={() => setShowAddParagraph(true)}
+              onMouseLeave={() => setShowAddParagraph(false)}
             >
-              <div
-                className="flex justify-between"
-                onMouseEnter={() => setParagraphControls(true)}
-                onMouseLeave={() => setParagraphControls(false)}
-              >
-                <p
-                  contentEditable
-                  onBlur={(e) => onBlur(e, "description")}
-                  placeholder="Enter your work experience description here."
-                ></p>
-                {showParagraphControls && (
-                  <div className="w-[20px] flex gap-1">
-                    <IconContainer
-                      icon={RemoveIcon}
-                      onClick={() => console.log("remove")}
-                    />
-                    <IconContainer
-                      icon={DragIcon}
-                      onClick={() => console.log("click")}
-                    />
-                  </div>
-                )}
-              </div>
-              <div
-                className="flex justify-between"
-                onMouseEnter={() => setParagraphControls(true)}
-                onMouseLeave={() => setParagraphControls(false)}
-              >
-                <p
-                  contentEditable
-                  onBlur={(e) => onBlur(e, "description")}
-                  placeholder="Provide details that showcase how you added value."
-                ></p>
-                {showParagraphControls && (
-                  <div className="w-[20px] flex gap-1">
-                    <IconContainer
-                      icon={RemoveIcon}
-                      onClick={() => console.log("remove")}
-                    />
-                    <IconContainer
-                      icon={DragIcon}
-                      onClick={() => console.log("click")}
-                    />
-                  </div>
-                )}
-              </div>
-              <div
-                className="flex justify-between"
-                onMouseEnter={() => setParagraphControls(true)}
-                onMouseLeave={() => setParagraphControls(false)}
-              >
-                <p
-                  contentEditable
-                  onBlur={(e) => onBlur(e, "description")}
-                  placeholder="Focus on responsibilities that are relevant to the job you are applying for."
-                ></p>
-                {showParagraphControls && (
-                  <div className="w-[20px] flex gap-1">
-                    <IconContainer
-                      icon={RemoveIcon}
-                      onClick={() => console.log("remove")}
-                    />
-                    <IconContainer
-                      icon={DragIcon}
-                      onClick={() => console.log("click")}
-                    />
-                  </div>
-                )}
-              </div>
-              <div
-                className="flex justify-between"
-                onMouseEnter={() => setParagraphControls(true)}
-                onMouseLeave={() => setParagraphControls(false)}
-              >
-                <p
-                  contentEditable
-                  onBlur={(e) => onBlur(e, "description")}
-                  placeholder="If you need help writing your work experience description, you can use the AI Writing Assistant."
-                ></p>
-                {showParagraphControls && (
-                  <div className="w-[20px] flex gap-1">
-                    <IconContainer
-                      icon={RemoveIcon}
-                      onClick={() => console.log("remove")}
-                    />
-                    <IconContainer
-                      icon={DragIcon}
-                      onClick={() => console.log("click")}
-                    />
-                  </div>
-                )}
-              </div>
+              {(experience.description || []).map((desc: DescriptionItem, index:any) => (
+                <JobDescParagraphItem
+                  key={desc.id}
+                  onBlur={(e: any) => {
+                    const index = experience.description.findIndex(
+                      (x: any) => x.id === desc.id
+                    );
+                    experience.description[index].value = e.target.innerHTML;
+                  }}
+                  desc={desc}
+                  onClick={() => removeParagraph(experienceIndex, index)}
+                />
+              ))}
+              {showAddParagraph && (
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="w-full absolute mb-4 h-[25px]"
+                  onClick={() => addParagraph(experienceIndex)}
+                >
+                  <p>+</p>
+                </Button>
+              )}
             </div>
           </div>
         </div>

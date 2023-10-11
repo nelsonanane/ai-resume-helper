@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import { useConfiguration } from "../store/useConfiguration";
-import PlusIcon from "../assets/Icons/PlusIcon";
-import RemoveIcon from "../assets/Icons/RemoveIcon";
-import DragIcon from "../assets/Icons/DragIcon";
-import { useResumeData } from "../store/useResumeData";
-import IconContainer from "../assets/Icons/IconContainer";
+import { useConfiguration } from "../store/useConfiguration"; 
 import ControlsIconGroup from "./ControlsIconGroup";
 
 type Props = {

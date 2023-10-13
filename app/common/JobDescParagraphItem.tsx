@@ -24,7 +24,7 @@ const ParagraphItem = (props: Props) => {
         onBlur={props.onBlur}
         placeholder={props.desc.placeholder}
         className="w-full"
-      ></p>
+      >{props.desc.value}</p>
       {showParagraphControls && (
         <div className="w-[50px] flex gap-1 absolute top-[-15px] right-0">
           <IconContainer

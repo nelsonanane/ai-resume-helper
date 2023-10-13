@@ -90,7 +90,8 @@
 }
 
 [contenteditable=true]:hover {
-  border: 1px dashed #AAA;    
+  border: 1px dashed #AAA;   
+  padding: 2px 2px; 
 }
 
 [contenteditable=true]:focus { 

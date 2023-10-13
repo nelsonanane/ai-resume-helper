@@ -28,9 +28,8 @@ type Props = {
 };
 
 function AiAssistantModal({ experienceId }: Props) {
-  const { experiences, suggestions, setSuggestions } = useResumeData(
-    (state: any) => state
-  );
+  const { experiences, suggestions, setSuggestions, addDescription } =
+    useResumeData((state: any) => state);
   const experience = experiences.find((ex: any) => ex.id === experienceId);
   const [role, setRole] = useState<string>(experience.title);
   const [current, setCurrent] = useState<boolean>(
@@ -63,9 +62,10 @@ function AiAssistantModal({ experienceId }: Props) {
     setLoading(false);
   };
 
-  const handleSuggestionClick = (suggestion:any) => {
-    setChecked([...checked, suggestion.id])
-  }
+  const handleSuggestionClick = (suggestion: any) => {
+    experience.description.push(suggestion);
+    setChecked([...checked, suggestion.id]);
+  };
 
   console.log("suggestions", suggestions);
   console.log("checked", checked);

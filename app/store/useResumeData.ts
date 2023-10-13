@@ -148,5 +148,5 @@ export const useResumeData = create((set) => ({
         descriptionIndex,
         1
       ),
-    })),
+    })), 
 }));

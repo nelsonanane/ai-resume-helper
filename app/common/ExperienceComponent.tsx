@@ -22,7 +22,7 @@ type Props = {
 function ExperienceComponent({ state, experience, clickHandler, onBlur, experienceIndex }: Props) {
   const [showIcons, setShowIcons] = useState(false);
   const [showAddParagraph, setShowAddParagraph] = useState(false);
-  const { addParagraph, removeParagraph } = useResumeData<any>((state: any) => state);
+  const { addParagraph, removeParagraph, setExperienceDescription } = useResumeData<any>((state: any) => state);
 
   console.log("experience", experience);
 
@@ -85,10 +85,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
                 <JobDescParagraphItem
                   key={desc.id}
                   onBlur={(e: any) => {
-                    const index = experience.description.findIndex(
-                      (x: any) => x.id === desc.id
-                    );
-                    experience.description[index].value = e.target.innerHTML;
+                    setExperienceDescription(experienceIndex, index, e.target)
                   }}
                   desc={desc}
                   onClick={() => removeParagraph(experienceIndex, index)}

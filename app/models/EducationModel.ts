@@ -6,7 +6,7 @@ export type Props = {
     degree: string;
     major: string;
     location: string;
-    name: string;
+    collegeName: string;
 }
 
 export class EducationModel {
@@ -15,14 +15,14 @@ export class EducationModel {
     degree: string;
     major: string;
     location: string;
-    name: string;
+    collegeName: string;
 
-    constructor({duration, degree, major, location, name}:Props) {
+    constructor({duration, degree, major, location, collegeName}:Props) {
         this.id = short.generate();
         this.duration = duration;
         this.degree = degree;
         this.major = major;
         this.location = location;
-        this.name = name;
-    }
+        this.collegeName = collegeName;
+    } 
 }

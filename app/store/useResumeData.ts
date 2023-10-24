@@ -51,12 +51,13 @@ export const useResumeData = create((set) => ({
       duration: "",
       degree: "",
       major: "",
-      name: "",
+      collegeName: "",
       location: "",
     }),
   ],
   suggestions: {},
-  setSuggestions: (suggestions: number) => set((state: any) => ({suggestions})),
+  setSuggestions: (suggestions: number) =>
+    set((state: any) => ({ suggestions })),
   setContact: (value: number, key: string) =>
     set((state: any) => ({
       ...state,
@@ -110,7 +111,7 @@ export const useResumeData = create((set) => ({
           duration: "",
           degree: "",
           major: "",
-          name: "",
+          collegeName: "",
           location: "",
         })
       ),
@@ -148,5 +149,34 @@ export const useResumeData = create((set) => ({
         descriptionIndex,
         1
       ),
-    })), 
+    })),
+  setExperienceDescription: (
+    experienceIndx: number,
+    descIndx: number,
+    data: { innerHTML: any }
+  ) =>
+    set((state: any) => {
+      const { innerHTML } = data;
+      const updatedData = [...state?.experiences];
+      updatedData[experienceIndx].description[descIndx].value = innerHTML;
+      return {
+        ...state,
+        experiences: updatedData,
+      };
+    }),
+  setEducation: (
+    index: number,
+    event: React.FocusEvent<HTMLParagraphElement>
+  ) =>
+    set((state: any) => {
+      const { innerHTML } = event.target;
+      const fieldName = event?.target?.getAttribute("data-name") as string;
+      const updatedColleges = [...state?.colleges];
+      updatedColleges[index][fieldName] = innerHTML;
+       
+      return {
+        ...state,
+        colleges: updatedColleges,
+      };
+    }),
 }));

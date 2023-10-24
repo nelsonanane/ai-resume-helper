@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useConfiguration } from "../store/useConfiguration"; 
 import ControlsIconGroup from "./ControlsIconGroup";
+import { SUUID } from "short-uuid";
 
 type Props = {
-  key: number;
+  key: SUUID;
   education: any;
   clickHandler: (step: string, id: number) => void;
-  onBlur: (event: any, field: string) => void;
+  onBlur: (event: React.FocusEvent<HTMLParagraphElement>) => void;
 };
 
 function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
@@ -31,35 +32,40 @@ function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
           contentEditable
           placeholder="Enter your degree"
           className="px-1 mb-1 font-semibold text-lg"
-          onBlur={(e) => onBlur(e, "degree")}
+          data-name="degree"
+          onBlur={onBlur}
         ></p>
         <div className="border-l-2 ml-[-15px] h-[90%]">
           <div className="ml-[15px]">
             <p
               contentEditable
               placeholder="Enter your major"
-              onBlur={(e) => onBlur(e, "major")}
+              onBlur={onBlur}
+              data-name="major"
               className="px-1 mb-1 text-zinc-600 font-medium"
             ></p>
             <div className="flex gap-2 w-[320px]">
               <p
                 contentEditable
                 placeholder="Enter your college"
-                onBlur={(e) => onBlur(e, "name")}
+                onBlur={onBlur}
+                data-name="collegeName"
                 className="px-1 mb-1 font-light w-[50%]"
               ></p>
               <div className="border-2 h-[15px] self-center"></div>
               <p
                 contentEditable
                 placeholder="Enter the location"
-                onBlur={(e) => onBlur(e, "location")}
+                onBlur={onBlur}
+                data-name="location"
                 className="px-1 mb-1 font-light w-[50%]"
               ></p>
             </div>
             <p
               className="p-1 w-[150px] h-[30px]"
               contentEditable
-              onBlur={(e) => onBlur(e, "duration")}
+              onBlur={onBlur}
+              data-name="dration"
               placeholder="from - until"
             ></p>
           </div>

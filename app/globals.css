@@ -90,13 +90,18 @@
 }
 
 [contenteditable=true]:hover {
-  border: 1px dashed #AAA;   
-  padding: 2px 2px; 
+  /* border: 1px dashed #AAA;   
+  padding: 2px 2px;  */ 
 }
 
 [contenteditable=true]:focus { 
-  background: rgba(128, 128, 128, 0.2); 
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 0.5rem;
   outline: none;
-  padding: 2px 2px;
+  /* padding: 2px 2px; */
 
 } 
+
+._bnEditor_12je0_3 { 
+  padding-inline: 0 !important; 
+}

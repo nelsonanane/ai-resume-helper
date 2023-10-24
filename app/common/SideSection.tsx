@@ -9,6 +9,7 @@ import { useResumeData } from "../store/useResumeData";
 import PlusIcon from "../assets/Icons/PlusIcon";
 import CrossIcon from "../assets/Icons/RemoveIcon";
 import IconContainer from "../assets/Icons/IconContainer";
+import { EducationModel } from "../models/EducationModel";
 
 type Props = {};
 
@@ -33,6 +34,7 @@ export default function SideSection({}: Props) {
     image,
     setImage,
     removeSkill,
+    setEducation
   } = useResumeData<any>((state: any) => state);
 
   const clickHandler = (step: string, id: number) => { 
@@ -130,15 +132,13 @@ export default function SideSection({}: Props) {
           </Badge>
           <IconContainer icon={PlusIcon} onClick={addEducation} />
         </div>
-        {colleges.map((col: any) => (
+        {colleges.map((col: EducationModel, indx: number) => (
           <EducationComponent
             key={col.id}
             education={col}
             clickHandler={clickHandler}
-            onBlur={(e: any, field: string) => {
-              const index = colleges.findIndex((x: any) => x.id === col.id);
-              colleges[index][field] = e.target.innerHTML;
-
+            onBlur={(e: React.FocusEvent<HTMLParagraphElement>) => { 
+              setEducation(indx, e)
               console.log(resume);
             }}
           />

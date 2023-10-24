@@ -4,14 +4,51 @@ import DragIcon from "../assets/Icons/DragIcon";
 import RemoveIcon from "../assets/Icons/RemoveIcon";
 import { DescriptionItem } from "../models/DescriptionItem";
 
-type Props = { 
+import { BlockNoteEditor } from "@blocknote/core";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import "@blocknote/core/style.css";
+
+type Props = {
   desc: DescriptionItem;
   onBlur: (e: any) => void;
   onClick: () => void;
 };
 
+// const theme = { 
+//   componentStyles: (theme:any) => ({
+//     // Adds basic styling to the editor.
+//     Editor: {
+//       backgroundColor: theme.colors.editor.background,
+//       borderRadius: theme.borderRadius,
+//       border: `1px solid ${theme.colors.border}`,
+//       boxShadow: `0 4px 12px ${theme.colors.shadow}`,
+//     },
+//     // Makes all hovered dropdown & menu items blue.
+//     Menu: {
+//       ".mantine-Menu-item[data-hovered], .mantine-Menu-item:hover": {
+//         backgroundColor: "blue",
+//       },
+//     },
+//     Toolbar: {
+//       ".mantine-Menu-dropdown": {
+//         ".mantine-Menu-item:hover": {
+//           backgroundColor: "blue",
+//         },
+//       },
+//     },
+//   }),
+// } satisfies Theme;
+
 const ParagraphItem = (props: Props) => {
   const [showParagraphControls, setShowParagraphControls] = useState(false);
+  const editor: BlockNoteEditor = useBlockNote({ 
+    domAttributes: { 
+      blockContent: { 
+        // class: "ml-[-50px]",
+      },
+    },
+  });
+
   return (
     <div
       className="flex justify-between relative w-full"
@@ -35,7 +72,9 @@ const ParagraphItem = (props: Props) => {
         </div>
       )}
     </div>
+
+    // <BlockNoteView editor={editor} theme={"light"} />
   );
 };
 
-export default ParagraphItem
+export default ParagraphItem;

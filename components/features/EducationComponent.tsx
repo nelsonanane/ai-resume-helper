@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { useConfiguration } from "../store/useConfiguration"; 
+import { useConfiguration } from "../../app/store/useConfiguration"; 
 import ControlsIconGroup from "./ControlsIconGroup";
 import { SUUID } from "short-uuid";
 
-type Props = {
-  key: SUUID;
+type Props = { 
   education: any;
   clickHandler: (step: string, id: number) => void;
   onBlur: (event: React.FocusEvent<HTMLParagraphElement>) => void;
 };
 
-function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
+function EducationComponent({ education, clickHandler, onBlur }: Props) {
   const state = useConfiguration((state: any) => state);
   const [showControls, setShowControls] = useState(false);
 
   return (
     <div
       className="flex gap-2 justify-center mb-5 relative"
-      key={key}
+      key={education.id}
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
@@ -34,6 +33,7 @@ function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
           className="px-1 mb-1 font-semibold text-lg"
           data-name="degree"
           onBlur={onBlur}
+          suppressContentEditableWarning={true}
         ></p>
         <div className="border-l-2 ml-[-15px] h-[90%]">
           <div className="ml-[15px]">
@@ -43,6 +43,7 @@ function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
               onBlur={onBlur}
               data-name="major"
               className="px-1 mb-1 text-zinc-600 font-medium"
+              suppressContentEditableWarning={true}
             ></p>
             <div className="flex gap-2 w-[320px]">
               <p
@@ -51,10 +52,12 @@ function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
                 onBlur={onBlur}
                 data-name="collegeName"
                 className="px-1 mb-1 font-light w-[50%]"
+                suppressContentEditableWarning={true}
               ></p>
               <div className="border-2 h-[15px] self-center"></div>
               <p
                 contentEditable
+                suppressContentEditableWarning={true}
                 placeholder="Enter the location"
                 onBlur={onBlur}
                 data-name="location"
@@ -64,6 +67,7 @@ function EducationComponent({ key, education, clickHandler, onBlur }: Props) {
             <p
               className="p-1 w-[150px] h-[30px]"
               contentEditable
+              suppressContentEditableWarning={true}
               onBlur={onBlur}
               data-name="dration"
               placeholder="from - until"

@@ -18,8 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { useResumeData } from "../store/useResumeData";
-import { DescriptionItem } from "../models/DescriptionItem";
+import { useResumeData } from "../../app/store/useResumeData";
+import { DescriptionItem } from "../../app/models/DescriptionItem";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 

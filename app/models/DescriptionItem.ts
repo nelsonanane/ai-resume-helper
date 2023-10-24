@@ -1,19 +1,12 @@
 
-import short from "short-uuid";
-
-export type Props = {  
-    value: string;
-    placeholder: string;
-}
+import short, { SUUID } from "short-uuid";
 
 export class DescriptionItem {
-    id: short.SUUID; 
-    value: string; 
-    placeholder: string;
+    id; 
+    value = "";
+    placeholder = "Enter your work experience description here.";
 
-    constructor({value, placeholder}:Props) {
-        this.id = short.generate(); 
-        this.value = value;
-        this.placeholder = placeholder
+    constructor() {
+        this.id = short.generate() as SUUID; 
     }
 }

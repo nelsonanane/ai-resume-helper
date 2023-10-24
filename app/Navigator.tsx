@@ -16,9 +16,9 @@ import {
 import OpenIcon from "./assets/Icons/OpenIcon";
 import SaveIcon from "./assets/Icons/SaveIcon";
 import { DownloadIcon } from "@radix-ui/react-icons";
-import { ColorPicker } from "./common/ColorPicker";
-import FontInput from "./common/FontInput";
-import FontSize from "./common/FontSizeToggle";
+import { ColorPicker } from "../components/features/ColorPicker";
+import FontInput from "../components/features/FontInput";
+import FontSize from "../components/features/FontSizeToggle";
 
 const menuCopyClass = "font-bold text-cyan-700 opacity-70";
 const IconClass = " text-cyan-700 opacity-70";

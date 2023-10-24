@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useConfiguration } from "../store/useConfiguration";
+import { useConfiguration } from "../../app/store/useConfiguration";
 
 const fontOptions = [
   {

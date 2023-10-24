@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { useConfiguration } from "../store/useConfiguration";
-import { useResumeData } from "../store/useResumeData";
+import { useConfiguration } from "../../app/store/useConfiguration";
+import { useResumeData } from "../../app/store/useResumeData";
 
 type Props = {};
 
@@ -21,6 +21,7 @@ function ContactInfo({}: Props) {
       <div>
         <p
           contentEditable
+          suppressContentEditableWarning={true}
           className="p-1 w-[680px] min-h-[108px]"
           placeholder="Enter your professional summary. Provide a brief overview of your relevant skills, experience, and qualities that would make you a good candidate for the job. Make sure to keep it concise and focused. If you need help writing your professional summary, you can use the AI Writing Assistant."
           onBlur={(e: any) => setSummary(e.target.innerHTML)}

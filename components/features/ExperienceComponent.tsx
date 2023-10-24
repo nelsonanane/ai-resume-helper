@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import PlusIcon from "../assets/Icons/PlusIcon";
-import CrossIcon from "../assets/Icons/RemoveIcon";
-import DragIcon from "../assets/Icons/DragIcon";
-import IconContainer from "../assets/Icons/IconContainer";
-import RemoveIcon from "../assets/Icons/RemoveIcon";
+import PlusIcon from "../../app/assets/Icons/PlusIcon";
+import CrossIcon from "../../app/assets/Icons/RemoveIcon";
+import DragIcon from "../../app/assets/Icons/DragIcon";
+import IconContainer from "../../app/assets/Icons/IconContainer";
+import RemoveIcon from "../../app/assets/Icons/RemoveIcon";
 import ControlsIconGroup from "./ControlsIconGroup";
-import { DescriptionItem } from "../models/DescriptionItem";
+import { DescriptionItem } from "../../app/models/DescriptionItem";
 import JobDescParagraphItem from "./JobDescParagraphItem";
 import { Button } from "@/components/ui/button";
-import { useResumeData } from "../store/useResumeData";
-import { ExperienceModel } from "../models/ExperienceModel";
+import { useResumeData } from "../../app/store/useResumeData";
+import { ExperienceModel } from "../../app/models/ExperienceModel";
 
 type Props = { 
   state: {color:string};
@@ -36,13 +36,13 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
       <ControlsIconGroup
         className={`${!showIcons && "hidden"}`}
         onClick={clickHandler}
-        id={experience.id}
-        withAIAssistant
+        id={experience.id} 
       />
       <div className="flex gap-3 mt-5">
         <p
           className="p-1 w-[150px] h-[30px]"
           contentEditable
+          suppressContentEditableWarning={true}
           placeholder="From - Until"
           onBlur={(e) => onBlur(e, "duration")}
         ></p>
@@ -53,6 +53,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
         <div>
           <p
             contentEditable
+            suppressContentEditableWarning={true}
             placeholder="Enter your job title here"
             className="p-1 font-bold text-[18px] ml-[16px]"
             onBlur={(e) => onBlur(e, "title")}
@@ -61,6 +62,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
             <div className="flex">
               <p
                 contentEditable
+                suppressContentEditableWarning={true}
                 placeholder="Enter company name"
                 className="p-1 font-semibold"
                 onBlur={(e) => onBlur(e, "company")}
@@ -68,6 +70,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
               <p className="mx-2 my-1 h-[15px] border-2 border-x-neutral-700 self-center opacity-[60%]"></p>
               <p
                 contentEditable
+                suppressContentEditableWarning={true}
                 placeholder="Enter company location"
                 className="p-1 font-semibold"
                 onBlur={(e) => onBlur(e, "location")}
@@ -75,6 +78,7 @@ function ExperienceComponent({ state, experience, clickHandler, onBlur, experien
             </div>
             <div
               //   contentEditable
+              // suppressContentEditableWarning={true}
               placeholder="Enter your work experience description. Provide details that showcase how you were able to contribute and add value. Focus on responsibilities that are relevant to the job you are applying for. If you need help writing your work experience description, you can use the AI Writing Assistant."
               className="p-1 w-[520px] relative"
               //   onBlur={(e) => onBlur(e, "description")}

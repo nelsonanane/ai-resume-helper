@@ -1,8 +1,8 @@
 import React from "react";
-import IconContainer from "../assets/Icons/IconContainer";
-import RemoveIcon from "../assets/Icons/RemoveIcon";
-import DragIcon from "../assets/Icons/DragIcon";
-import PlusIcon from "../assets/Icons/PlusIcon";
+import IconContainer from "../../app/assets/Icons/IconContainer";
+import RemoveIcon from "../../app/assets/Icons/RemoveIcon";
+import DragIcon from "../../app/assets/Icons/DragIcon";
+import PlusIcon from "../../app/assets/Icons/PlusIcon";
 import { ACTION_OPTIONS } from "./SideSection";
 import AiAssistantButton from "./AiAssistantButton";
 

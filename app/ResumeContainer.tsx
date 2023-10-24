@@ -14,7 +14,7 @@ export default function ResumeContainer({ componentRef }: any) {
     <div className="flex justify-center m-5"> 
       <style>{getPageMargins()}</style>
       <Card className="rounded-sm">
-        <div className="w-[1190px] min-h-[auto] p-16 " ref={componentRef}>
+        <div className="w-[1190px] min-h-[1459px] p-16 " ref={componentRef}>
           <AnaTemplate />
         </div>
       </Card>

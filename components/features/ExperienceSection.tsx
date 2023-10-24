@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { useConfiguration } from "../store/useConfiguration";
+import { useConfiguration } from "../../app/store/useConfiguration";
 import { Separator } from "@/components/ui/separator";
 import ExperienceComponent from "./ExperienceComponent";
-import { useResumeData } from "../store/useResumeData";
-import PlusIcon from "../assets/Icons/PlusIcon";
-import IconContainer from "../assets/Icons/IconContainer";
+import { useResumeData } from "../../app/store/useResumeData";
+import PlusIcon from "../../app/assets/Icons/PlusIcon";
+import IconContainer from "../../app/assets/Icons/IconContainer";
 import { ACTION_OPTIONS } from "./SideSection";
 import { openai } from "@/lib/openaiConfig";
 
@@ -16,6 +16,7 @@ function ExperienceSection({}: Props) {
   const { experiences, addExperience, removeExperience, setExperience } =
     useResumeData<any>((state: any) => state);
   const resume = useResumeData<any>((state: any) => state);
+  const [showButton, setShowButton] = useState<boolean>(false);
 
   const clickHandler = async (step: string, id: string) => {
     switch (step) {
@@ -49,7 +50,7 @@ function ExperienceSection({}: Props) {
   console.log("resume", resume);
 
   return (
-    <div className="mt-10 ">
+    <div className="mt-10 " onMouseEnter={()=>setShowButton(true)} onMouseLeave={() => setShowButton(false)}>
       <div className="flex gap-4 w-full items-center">
         <Badge
           className={`p-6 pt-1 pb-1 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
@@ -57,7 +58,7 @@ function ExperienceSection({}: Props) {
         >
           EXPERIENCE
         </Badge>
-        <IconContainer icon={PlusIcon} onClick={addExperience} />
+        {showButton && <IconContainer icon={PlusIcon} onClick={addExperience} />}
       </div>
       <div>
         {experiences?.map((item: any, index: number) => (

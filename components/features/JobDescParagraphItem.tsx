@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import IconContainer from "../assets/Icons/IconContainer";
-import DragIcon from "../assets/Icons/DragIcon";
-import RemoveIcon from "../assets/Icons/RemoveIcon";
-import { DescriptionItem } from "../models/DescriptionItem";
+import IconContainer from "../../app/assets/Icons/IconContainer";
+import DragIcon from "../../app/assets/Icons/DragIcon";
+import RemoveIcon from "../../app/assets/Icons/RemoveIcon";
+import { DescriptionItem } from "../../app/models/DescriptionItem";
 
 import { BlockNoteEditor } from "@blocknote/core";
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
@@ -58,6 +58,7 @@ const ParagraphItem = (props: Props) => {
     >
       <p
         contentEditable
+        suppressContentEditableWarning={true}
         onBlur={props.onBlur}
         placeholder={props.desc.placeholder}
         className="w-full"

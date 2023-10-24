@@ -2,99 +2,26 @@ import { create } from "zustand";
 import { ExperienceModel } from "../models/ExperienceModel";
 import { EducationModel } from "../models/EducationModel";
 import { DescriptionItem } from "../models/DescriptionItem";
-
-const defaultDescriptionItems = [
-  new DescriptionItem({
-    value: "",
-    placeholder: "Enter your work experience description here.",
-  }),
-  new DescriptionItem({
-    value: "",
-    placeholder: "Provide details that showcase how you added value.",
-  }),
-  new DescriptionItem({
-    value: "",
-    placeholder:
-      "Focus on responsibilities that are relevant to the job you are applying for.",
-  }),
-  new DescriptionItem({
-    value: "",
-    placeholder:
-      "If you need help writing your work experience description, you can use the AI Writing Assistant.",
-  }),
-];
+import { ResumeModel } from "../models/ResumeModel";
 
 export const useResumeData = create((set) => ({
-  contact: {
-    firstName: "",
-    lastName: "",
-    profession: "",
-    phone: "",
-    email: "",
-    location: "",
-    website: "",
-  },
-  summary: "",
-  experiences: [
-    new ExperienceModel({
-      duration: "",
-      title: "",
-      company: "",
-      location: "",
-      description: defaultDescriptionItems,
-    }),
-  ],
-  skills: [],
-  image: null,
-  colleges: [
-    new EducationModel({
-      duration: "",
-      degree: "",
-      major: "",
-      collegeName: "",
-      location: "",
-    }),
-  ],
-  suggestions: {},
+  ...new ResumeModel(),
   setSuggestions: (suggestions: number) =>
     set((state: any) => ({ suggestions })),
   setContact: (value: number, key: string) =>
-    set((state: any) => ({
-      ...state,
-      contact: { ...state.contact, [key]: value },
-    })),
+    set((state: any) => {
+      console.log('this.state.setContact', state.contact.updateContact(key, value));
+      console.log('state', state)
+      return {
+        ...state,
+        ...state.contact.updateContact(key, value)
+      }
+    }),
   setSummary: (summary: string) => set((state: any) => ({ summary })),
   addExperience: () =>
     set((state: any) => ({
       ...state,
-      ...state.experiences.push(
-        new ExperienceModel({
-          duration: "",
-          title: "",
-          company: "",
-          location: "",
-          description: [
-            new DescriptionItem({
-              value: "",
-              placeholder: "Enter your work experience description here.",
-            }),
-            new DescriptionItem({
-              value: "",
-              placeholder: "Provide details that showcase how you added value.",
-            }),
-            new DescriptionItem({
-              value: "",
-              placeholder:
-                "Focus on responsibilities that are relevant to the job you are applying for.",
-            }),
-            new DescriptionItem({
-              value: "",
-              placeholder:
-                "If you need help writing your work experience description, you can use the AI Writing Assistant.",
-            }),
-          ],
-        })
-      ),
+      ...state.experiences.push(new ExperienceModel()),
     })),
   removeExperience: (id: any) =>
     set((state: any) => ({
@@ -107,13 +34,7 @@ export const useResumeData = create((set) => ({
     set((state: any) => ({
       ...state,
       ...state.colleges.push(
-        new EducationModel({
-          duration: "",
-          degree: "",
-          major: "",
-          collegeName: "",
-          location: "",
-        })
+        new EducationModel()
       ),
     })),
   removeEducation: (id: any) =>
@@ -136,10 +57,7 @@ export const useResumeData = create((set) => ({
     set((state: any) => ({
       ...state,
       ...state.experiences[experienceIndex]?.description.push(
-        new DescriptionItem({
-          value: "",
-          placeholder: "Enter your work experience description here.",
-        })
+        new DescriptionItem()
       ),
     })),
   removeParagraph: (experienceIndex: number, descriptionIndex: number) =>

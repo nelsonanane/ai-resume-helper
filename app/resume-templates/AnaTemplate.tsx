@@ -1,9 +1,9 @@
 import React from "react";
-import ContactInfo from "../common/ContactInfo";
-import Summary from "../common/Summary";
+import ContactInfo from "../../components/features/ContactInfo";
+import Summary from "../../components/features/Summary";
 import { Separator } from "@/components/ui/separator";
-import ExperienceSection from "../common/ExperienceSection";
-import SideSection from "../common/SideSection";
+import ExperienceSection from "../../components/features/ExperienceSection";
+import SideSection from "../../components/features/SideSection";
 
 type Props = {};
 

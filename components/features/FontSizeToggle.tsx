@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { useConfiguration } from "../store/useConfiguration";
+import { useConfiguration } from "../../app/store/useConfiguration";
 
 export default function FontSizeToggle() {
   const {fontSize, setFontSize} = useConfiguration((state:any) => state)

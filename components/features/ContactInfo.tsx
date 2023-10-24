@@ -1,8 +1,8 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
-import { useConfiguration } from "../store/useConfiguration";
+import { useConfiguration } from "../../app/store/useConfiguration";
 import { cn } from "@/lib/utils"
-import { useResumeData } from "../store/useResumeData";
+import { useResumeData } from "../../app/store/useResumeData";
 
 type Props = {};
 
@@ -23,6 +23,7 @@ function ContactInfo({}: Props) {
             <p className="font-bold">Phone:</p>
             <p
               contentEditable
+              suppressContentEditableWarning={true}
               className="px-1"
               placeholder="Enter phone number"
               onBlur={(e:any)=> setContact(e.target.innerHTML, 'phone')}
@@ -32,6 +33,7 @@ function ContactInfo({}: Props) {
             <p className="font-bold">Email:</p>
             <p
               contentEditable
+              suppressContentEditableWarning={true}
               className="px-1"
               placeholder="Enter email address"
               onBlur={(e:any)=> setContact(e.target.innerHTML, 'email')}
@@ -43,6 +45,7 @@ function ContactInfo({}: Props) {
             <p className="font-bold">Location:</p>
             <p
               contentEditable
+              suppressContentEditableWarning={true}
               className="px-1"
               placeholder="Enter city and state"
               onBlur={(e:any)=> setContact(e.target.innerHTML, 'location')}
@@ -52,6 +55,7 @@ function ContactInfo({}: Props) {
             <p className="font-bold">Website:</p>
             <p
               contentEditable
+              suppressContentEditableWarning={true}
               className="px-1"
               placeholder="Enter website/linkedin"
               onBlur={(e:any)=> setContact(e.target.innerHTML, 'website')}

@@ -1,15 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import React, { useRef, useState } from "react";
-import { useConfiguration } from "../store/useConfiguration";
+import { useConfiguration } from "../../app/store/useConfiguration";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { CameraIcon } from "@radix-ui/react-icons";
 import EducationComponent from "./EducationComponent";
-import { useResumeData } from "../store/useResumeData";
-import PlusIcon from "../assets/Icons/PlusIcon";
-import CrossIcon from "../assets/Icons/RemoveIcon";
-import IconContainer from "../assets/Icons/IconContainer";
-import { EducationModel } from "../models/EducationModel";
+import { useResumeData } from "../../app/store/useResumeData";
+import PlusIcon from "../../app/assets/Icons/PlusIcon";
+import CrossIcon from "../../app/assets/Icons/RemoveIcon";
+import IconContainer from "../../app/assets/Icons/IconContainer";
+import { EducationModel } from "../../app/models/EducationModel";
 
 type Props = {};
 
@@ -24,6 +24,8 @@ export default function SideSection({}: Props) {
   const state = useConfiguration((state: any) => state);
   const ref = useRef<HTMLInputElement>(null);
   const resume = useResumeData<any>((state: any) => state?.resume);
+  const [showButton, setShowButton] = useState({education: false, skills: false});
+
   const {
     colleges,
     addEducation,
@@ -34,10 +36,10 @@ export default function SideSection({}: Props) {
     image,
     setImage,
     removeSkill,
-    setEducation
+    setEducation,
   } = useResumeData<any>((state: any) => state);
 
-  const clickHandler = (step: string, id: number) => { 
+  const clickHandler = (step: string, id: number) => {
     switch (step) {
       case ACTION_OPTIONS.PLUS:
         addEducation();
@@ -47,7 +49,7 @@ export default function SideSection({}: Props) {
         break;
       case ACTION_OPTIONS.DRAG:
         console.log("drag experience");
-        break; 
+        break;
       default:
         console.log("NO ACTION TAKEN");
     }
@@ -105,45 +107,50 @@ export default function SideSection({}: Props) {
           <p
             className="px-1 text-3xl font-light"
             contentEditable
+            suppressContentEditableWarning={true}
             placeholder="First Name"
             onBlur={(e: any) => setContact(e.target.innerHTML, "firstName")}
           ></p>
           <p
             className="px-1 text-3xl font-bold"
             contentEditable
+            suppressContentEditableWarning={true}
             placeholder="Last Name"
             onBlur={(e: any) => setContact(e.target.innerHTML, "lastName")}
           ></p>
         </div>
         <p
           contentEditable
+          suppressContentEditableWarning={true}
           placeholder="Enter your profession"
           className="px-1 text-lg font-medium"
           onBlur={(e: any) => setContact(e.target.innerHTML, "profession")}
         ></p>
       </div>
-      <div className="mt-[6rem] ml-[3rem]">
-        <div className="flex gap-4 w-full items-center">
-          <Badge
-            className={`p-6 py-1 my-2 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
-            style={{ backgroundColor: state.color }}
-          >
-            EDUCATION
-          </Badge>
-          <IconContainer icon={PlusIcon} onClick={addEducation} />
+      <div className="mt-20 ml-14">
+        <div onMouseEnter={() => setShowButton({...showButton,education:true})} onMouseLeave={() => setShowButton({...showButton,education:false})}>
+          <div className="flex gap-4 w-full items-center">
+            <Badge
+              className={`p-6 py-1 my-2 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
+              style={{ backgroundColor: state.color }}
+            >
+              EDUCATION
+            </Badge>
+            {showButton.education && <IconContainer icon={PlusIcon} onClick={addEducation} />}
+          </div>
+          {colleges.map((col: EducationModel, indx: number) => (
+            <EducationComponent
+              key={col.id}
+              education={col}
+              clickHandler={clickHandler}
+              onBlur={(e: React.FocusEvent<HTMLParagraphElement>) => {
+                setEducation(indx, e);
+                console.log(resume);
+              }}
+            />
+          ))}
         </div>
-        {colleges.map((col: EducationModel, indx: number) => (
-          <EducationComponent
-            key={col.id}
-            education={col}
-            clickHandler={clickHandler}
-            onBlur={(e: React.FocusEvent<HTMLParagraphElement>) => { 
-              setEducation(indx, e)
-              console.log(resume);
-            }}
-          />
-        ))}
-        <div className="mt-10">
+        <div className="mt-10" onMouseEnter={() => setShowButton({...showButton,skills:true})} onMouseLeave={() => setShowButton({...showButton,skills:false})}>
           <div className="flex gap-4 w-full items-center">
             <Badge
               className={`p-6 py-1 my-2 text-[${state.fontSize}] rounded-2xl bg-[${state.color}]`}
@@ -152,7 +159,7 @@ export default function SideSection({}: Props) {
               SKILLS
             </Badge>
             <div>
-              <IconContainer icon={PlusIcon} onClick={addSkill} />
+              {showButton.skills && <IconContainer icon={PlusIcon} onClick={addSkill} />}
             </div>
           </div>
           <div className="mt-3 auto-rows-min">
@@ -160,6 +167,7 @@ export default function SideSection({}: Props) {
               <div key={index} className="flex">
                 <p
                   contentEditable
+                  suppressContentEditableWarning={true}
                   placeholder="Enter skill"
                   className="px-1 mb-1 text-zinc-600 font-medium"
                   onBlur={(e: any) => {

@@ -13,14 +13,14 @@ export default function Home() {
 
   const handleBeforeContent = () => {
     if (typeof window !== "undefined") {
-      const img = document.getElementsByTagName("img");
+      const img = window.document.getElementsByTagName("img");
       console.log(img);
 
-      document.getElementById("image-select")
-        ? (document.getElementById("image-select")!.style.display = "none")
+      window.document.getElementById("image-select")
+        ? (window.document.getElementById("image-select")!.style.display = "none")
         : "";
       console.log("image", img);
-      console.log(document.getElementById("image-select"));
+      console.log(window.document.getElementById("image-select"));
     }
   };
 

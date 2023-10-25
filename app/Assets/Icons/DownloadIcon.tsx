@@ -4,7 +4,7 @@ type Props = {
   className: string;
 };
 
-function SaveIcon({className}: Props) {
+function DownloadIcon({className}: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,4 +23,4 @@ function SaveIcon({className}: Props) {
   );
 }
 
-export default SaveIcon;
+export default DownloadIcon;

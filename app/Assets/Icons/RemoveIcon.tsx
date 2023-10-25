@@ -6,7 +6,7 @@ type Props = {
   fill: string;
 };
 
-function CrossIcon({ className, stroke, fill = "none" }: Props) {
+function RemoveIcon({ className, stroke, fill = "none" }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,4 +21,4 @@ function CrossIcon({ className, stroke, fill = "none" }: Props) {
   );
 }
 
-export default CrossIcon;
+export default RemoveIcon;

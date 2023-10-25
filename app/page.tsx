@@ -14,15 +14,15 @@ export default function Home() {
     content: () => componentRef.current,
   });
 
-  const handleBeforeContent = () => { 
-    const img = document.getElementsByTagName("img")
-    console.log(img)
+  // const handleBeforeContent = () => { 
+  //   const img = document.getElementsByTagName("img")
+  //   console.log(img)
    
-    document.getElementById("image-select") ? document.getElementById("image-select")!.style.display = "none" : '';
-      console.log('image', img)
-      console.log(document.getElementById("image-select"))
+  //   document.getElementById("image-select") ? document.getElementById("image-select")!.style.display = "none" : '';
+  //     console.log('image', img)
+  //     console.log(document.getElementById("image-select"))
  
-  }
+  // }
 
   return (
 

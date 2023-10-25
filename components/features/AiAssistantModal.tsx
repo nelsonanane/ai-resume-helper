@@ -55,7 +55,7 @@ function AiAssistantModal({ experienceId }: Props) {
       [experienceId]: completion.data.choices[0].text
         .split("\n")
         .map(
-          (item: any) => new DescriptionItem({ value: item, placeholder: "" })
+          (item: any) => new DescriptionItem()
         ),
     });
 

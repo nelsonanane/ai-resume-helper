@@ -12,15 +12,15 @@ export default function Home() {
   });
 
   const handleBeforeContent = () => {
-    if (typeof window !== "undefined") {
-      const img = window.document.getElementsByTagName("img");
+    if (typeof document !== "undefined") {
+      const img = document.getElementsByTagName("img");
       console.log(img);
 
-      window.document.getElementById("image-select")
-        ? (window.document.getElementById("image-select")!.style.display = "none")
+      document.getElementById("image-select")
+        ? (document.getElementById("image-select")!.style.display = "none")
         : "";
       console.log("image", img);
-      console.log(window.document.getElementById("image-select"));
+      console.log(document.getElementById("image-select"));
     }
   };
 

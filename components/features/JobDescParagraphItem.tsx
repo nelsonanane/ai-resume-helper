@@ -4,8 +4,6 @@ import DragIcon from "../../app/assets/icons/DragIcon";
 import RemoveIcon from "../../app/assets/icons/RemoveIcon";
 import { DescriptionItem } from "../../app/models/DescriptionItem";
 
-import "@blocknote/core/style.css";
-
 type Props = {
   desc: DescriptionItem;
   onBlur: (e: any) => void;

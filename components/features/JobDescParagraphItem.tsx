@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import IconContainer from "../../app/assets/temp/IconContainer";
-import DragIcon from "../../app/assets/temp/DragIcon";
-import RemoveIcon from "../../app/assets/temp/RemoveIcon";
+import IconContainer from "../../app/assets/icons/IconContainer";
+import DragIcon from "../../app/assets/icons/DragIcon";
+import RemoveIcon from "../../app/assets/icons/RemoveIcon";
 import { DescriptionItem } from "../../app/models/DescriptionItem";
 
 import { BlockNoteEditor } from "@blocknote/core";

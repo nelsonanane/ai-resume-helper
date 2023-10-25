@@ -12,13 +12,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import OpenIcon from "./assets/Icons/OpenIcon";
-import SaveIcon from "./assets/Icons/SaveIcon";
-import { DownloadIcon } from "@radix-ui/react-icons";
+} from "@/components/ui/navigation-menu"; 
 import { ColorPicker } from "../components/features/ColorPicker";
 import FontInput from "../components/features/FontInput";
-import FontSize from "../components/features/FontSizeToggle";
+import FontSize from "../components/features/FontSizeToggle"; 
+import { PackageOpen } from 'lucide-react';
+import { DownloadCloud } from 'lucide-react';
+import { Save } from 'lucide-react';
 
 const menuCopyClass = "font-bold text-cyan-700 opacity-70";
 const IconClass = " text-cyan-700 opacity-70";
@@ -118,8 +118,8 @@ export default function Navigator({onDownload}:any) {
           </NavigationMenuItem>
           <NavigationMenuItem className="cursor-pointer">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <div className="flex justify-center gap-1.5">
-                <OpenIcon className={IconClass} />
+              <div className="flex justify-center gap-1.5"> 
+                <PackageOpen className="text-cyan-700"/>
                 <p className={menuCopyClass}>Open</p>
               </div>
             </NavigationMenuLink>
@@ -127,7 +127,7 @@ export default function Navigator({onDownload}:any) {
           <NavigationMenuItem className="cursor-pointer">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <div className="flex justify-center gap-1.5">
-                <SaveIcon className={IconClass} />
+                <Save className={IconClass} />
                 <p className={menuCopyClass}>Save</p>
               </div>
             </NavigationMenuLink>
@@ -135,7 +135,7 @@ export default function Navigator({onDownload}:any) {
           <NavigationMenuItem className="cursor-pointer" onClick={onDownload}>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               <div className="flex justify-center gap-1.5">
-                <DownloadIcon className={IconClass} />
+                <DownloadCloud className={IconClass} />
                 <p className={menuCopyClass}>Download</p>
               </div>
             </NavigationMenuLink>

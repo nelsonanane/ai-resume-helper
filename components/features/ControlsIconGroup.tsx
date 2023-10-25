@@ -40,4 +40,4 @@ function ControlsIconGroup({ className, onClick, id, withAIAssistant }: Props) {
   );
 }
 
-export default ControlsIconGroup;
+export default ControlsIconGroup

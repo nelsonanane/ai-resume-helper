@@ -3,8 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { useConfiguration } from "../../app/store/useConfiguration"; 
 import ExperienceComponent from "./ExperienceComponent";
 import { useResumeData } from "../../app/store/useResumeData";
-import PlusIcon from "../../app/assets/Icons/PlusIcon";
-import IconContainer from "../../app/assets/Icons/IconContainer";
+import PlusIcon from "../../app/assets/icons/PlusIcon";
+import IconContainer from "../../app/assets/icons/IconContainer";
 import { ACTION_OPTIONS } from "./SideSection";
 import { openai } from "@/lib/openaiConfig";
 

@@ -6,9 +6,9 @@ import { Input } from "@/components/ui/input";
 import { CameraIcon } from "@radix-ui/react-icons";
 import EducationComponent from "./EducationComponent";
 import { useResumeData } from "../../app/store/useResumeData";
-import PlusIcon from "../../app/assets/Icons/PlusIcon";
-import CrossIcon from "../../app/assets/Icons/RemoveIcon";
-import IconContainer from "../../app/assets/Icons/IconContainer";
+import PlusIcon from "../../app/assets/icons/PlusIcon";
+import CrossIcon from "../../app/assets/icons/RemoveIcon";
+import IconContainer from "../../app/assets/icons/IconContainer";
 import { EducationModel } from "../../app/models/EducationModel";
 
 type Props = {};

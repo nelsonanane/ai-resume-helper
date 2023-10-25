@@ -11,10 +11,6 @@ export default function Home() {
     content: () => componentRef.current,
   });
 
-  useEffect(() => {
-    handleBeforeContent()
-  }, []);
-
   const handleBeforeContent = () => {
     if (typeof document !== "undefined") {
       const img = document.getElementsByTagName("img");

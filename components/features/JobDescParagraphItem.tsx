@@ -4,8 +4,6 @@ import DragIcon from "../../app/assets/icons/DragIcon";
 import RemoveIcon from "../../app/assets/icons/RemoveIcon";
 import { DescriptionItem } from "../../app/models/DescriptionItem";
 
-import { BlockNoteEditor } from "@blocknote/core";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 
 type Props = {
@@ -40,14 +38,7 @@ type Props = {
 // } satisfies Theme;
 
 const ParagraphItem = (props: Props) => {
-  const [showParagraphControls, setShowParagraphControls] = useState(false);
-  const editor: BlockNoteEditor = useBlockNote({ 
-    domAttributes: { 
-      blockContent: { 
-        // class: "ml-[-50px]",
-      },
-    },
-  });
+  const [showParagraphControls, setShowParagraphControls] = useState(false); 
 
   return (
     <div
@@ -72,9 +63,7 @@ const ParagraphItem = (props: Props) => {
           <IconContainer icon={DragIcon} onClick={() => console.log("click")} />
         </div>
       )}
-    </div>
-
-    // <BlockNoteView editor={editor} theme={"light"} />
+    </div> 
   );
 };
 

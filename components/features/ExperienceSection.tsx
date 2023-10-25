@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { useConfiguration } from "../../app/store/useConfiguration";
-import { Separator } from "@/components/ui/separator";
+import { useConfiguration } from "../../app/store/useConfiguration"; 
 import ExperienceComponent from "./ExperienceComponent";
 import { useResumeData } from "../../app/store/useResumeData";
 import PlusIcon from "../../app/assets/Icons/PlusIcon";

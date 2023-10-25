@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import PlusIcon from "../../app/assets/Icons/PlusIcon";
-import CrossIcon from "../../app/assets/Icons/RemoveIcon";
-import DragIcon from "../../app/assets/Icons/DragIcon";
-import IconContainer from "../../app/assets/Icons/IconContainer";
-import RemoveIcon from "../../app/assets/Icons/RemoveIcon";
 import ControlsIconGroup from "./ControlsIconGroup";
 import { DescriptionItem } from "../../app/models/DescriptionItem";
 import JobDescParagraphItem from "./JobDescParagraphItem";

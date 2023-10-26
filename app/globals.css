@@ -73,6 +73,20 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4, h5, h6 {
+    color: rgb(100 116 139); 
+    font-weight: 700;
+    margin: 25px 0 5px 0;
+  }
+  h1 {
+    font-size: 2.25rem/* 36px */;
+    line-height: 2.5rem/* 40px */;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
 }
 
 [contenteditable=true]:empty:before{

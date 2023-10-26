@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react"; 
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import {
@@ -11,13 +11,14 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"; 
+} from "@/components/ui/navigation-menu";
 import { ColorPicker } from "../components/features/ColorPicker";
 import FontInput from "../components/features/FontInput";
-import FontSize from "../components/features/FontSizeToggle"; 
-import { PackageOpen } from 'lucide-react';
-import { DownloadCloud } from 'lucide-react';
-import { Save } from 'lucide-react';
+import FontSize from "../components/features/FontSizeToggle";
+import { PackageOpen } from "lucide-react";
+import { DownloadCloud } from "lucide-react";
+import { Save } from "lucide-react";
+import Image from "next/image";
 
 const menuCopyClass = "font-bold text-cyan-700 opacity-70";
 const IconClass = " text-cyan-700 opacity-70";
@@ -62,11 +63,21 @@ const components: { id: number; title: string; component: any }[] = [
   },
 ];
 
-export default function Navigator({onDownload}:any) {
+export default function Navigator({ onDownload }: any) {
   return (
     <div className="flex justify-center mt-5 sticky top-0 bg-white z-50">
       <NavigationMenu>
         <NavigationMenuList>
+          <NavigationMenuItem className="cursor-pointer mr-10"> 
+              <a href="/">
+                <Image
+                  src="/QRMLOGO2.jpg"
+                  alt="Company logo"
+                  width={180}
+                  height={61}
+                />
+              </a> 
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger className={menuCopyClass}>
               Resources
@@ -79,24 +90,44 @@ export default function Navigator({onDownload}:any) {
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       href="/"
                     >
+                      <Image
+                        src="/QRMLOGO2.jpg"
+                        alt="Company logo"
+                        width={150}
+                        height={50}
+                      />
                       <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
+                        Quick Resume Maker
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components built with Radix UI and
-                        Tailwind CSS.
+                        Reshape Your Resume, Reshape Your Destiny – Witness the
+                        Magic of Success Unfolding.
                       </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                <ListItem
+                  href="/about"
+                  title="About"
+                  className="cursor-pointer"
+                >
+                  Get more information about Quick Resume Makers
                 </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
+                <ListItem
+                  href="/faq"
+                  title="Frequently Asked Questions"
+                  className="cursor-pointer"
+                >
+                  Have questions about your resume before you begin? Any other
+                  questions about our services? Find resources here
                 </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem
+                  href="/contact"
+                  title="Contact Us"
+                  className="cursor-pointer"
+                >
+                  Have question or just want to provide feedback. Find contact
+                  form here
                 </ListItem>
               </ul>
             </NavigationMenuContent>
@@ -117,8 +148,8 @@ export default function Navigator({onDownload}:any) {
           </NavigationMenuItem>
           <NavigationMenuItem className="cursor-pointer">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <div className="flex justify-center gap-1.5"> 
-                <PackageOpen className="text-cyan-700"/>
+              <div className="flex justify-center gap-1.5">
+                <PackageOpen className="text-cyan-700" />
                 <p className={menuCopyClass}>Open</p>
               </div>
             </NavigationMenuLink>
@@ -145,11 +176,15 @@ export default function Navigator({onDownload}:any) {
   );
 }
 
-const ListItem = ({ className, title, children, ...props }: any) => {
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
   return (
     <li>
-      <NavigationMenuLink asChild onSelect={(e) => e.preventDefault()}>
-        <div
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -160,10 +195,9 @@ const ListItem = ({ className, title, children, ...props }: any) => {
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </div>
+        </a>
       </NavigationMenuLink>
     </li>
-  );
-};
-
-ListItem.displayName = "ListItem";
+  )
+})
+ListItem.displayName = "ListItem"

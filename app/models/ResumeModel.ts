@@ -15,5 +15,7 @@ export class ResumeModel {
 
   constructor() {}
 
-
+  updateContact(key:string, value:string) {   
+    return { ...this.contact, [key]: value }
+  }
 }

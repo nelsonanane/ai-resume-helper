@@ -1,15 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import Navigator from "./Navigator";
+import React, { useEffect, useRef } from "react"; 
 import ResumeContainer from "./ResumeContainer";
 import { useReactToPrint } from "react-to-print";
 
 export default function Home() {
-  const componentRef = useRef<any>();
-
-  const handleDownload = useReactToPrint({
-    content: () => componentRef.current,
-  });
+  const componentRef = useRef<any>(); 
 
   const handleBeforeContent = () => {
     if (typeof document !== "undefined") {
@@ -26,8 +21,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navigator onDownload={handleDownload} />
-      <ResumeContainer componentRef={componentRef} />
+      <ResumeContainer />
     </div>
   );
 }

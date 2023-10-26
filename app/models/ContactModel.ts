@@ -20,7 +20,5 @@ export class ContactModel {
   website = "";
   constructor() {}
 
-  updateContact(key:string, value:string) {   
-    return { ...this, [key]: value }
-  }
+  
 }

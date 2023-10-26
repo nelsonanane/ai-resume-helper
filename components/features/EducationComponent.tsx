@@ -69,7 +69,7 @@ function EducationComponent({ education, clickHandler, onBlur }: Props) {
               contentEditable
               suppressContentEditableWarning={true}
               onBlur={onBlur}
-              data-name="dration"
+              data-name="duration"
               placeholder="from - until"
             ></p>
           </div>

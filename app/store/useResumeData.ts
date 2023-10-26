@@ -8,13 +8,12 @@ export const useResumeData = create((set) => ({
   ...new ResumeModel(),
   setSuggestions: (suggestions: number) =>
     set((state: any) => ({ suggestions })),
-  setContact: (value: number, key: string) =>
-    set((state: any) => {
-      console.log('this.state.setContact', state.contact.updateContact(key, value));
+  setContact: (value: string, key: string) =>
+    set((state: any) => { 
       console.log('state', state)
       return {
         ...state,
-        ...state.contact.updateContact(key, value)
+        contact: {...state.contact, [key]: value}
       }
     }),
   setSummary: (summary: string) => set((state: any) => ({ summary })),

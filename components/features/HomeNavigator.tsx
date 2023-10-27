@@ -59,15 +59,6 @@ function HomeNavigator({}: Props) {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-          <NavigationMenuItem className="cursor-pointer">
-            <Link href="/resume">
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                <div className="flex justify-center gap-1.5">
-                  <p className={menuCopyClass}>Resume</p>
-                </div>
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </nav>

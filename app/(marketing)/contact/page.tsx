@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Switch } from "@headlessui/react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type Props = {};
 
@@ -11,7 +12,7 @@ function ContactUs({}: Props) {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-75px)] flex-row"> 
+    <div className="flex items-center justify-center h-[calc(100vh-75px)] flex-row">
       <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
@@ -26,7 +27,7 @@ function ContactUs({}: Props) {
           />
         </div>
         <div className="mx-auto max-w-2xl text-center">
-        <h1 className="flex justify-center">- Let&apos;s Talk -</h1>
+          <h1 className="flex justify-center">- Let&apos;s Talk -</h1>
           <p className="mt-2 text-lg leading-8 text-gray-600">
             Aute magna irure deserunt veniam aliqua magna enim voluptate.
           </p>
@@ -179,9 +180,9 @@ function ContactUs({}: Props) {
               </div>
               <Switch.Label className="text-sm leading-6 text-gray-600">
                 By selecting this, you agree to our{" "}
-                <a href="#" className="font-semibold text-indigo-600">
+                <Link href="#" className="font-semibold text-indigo-600">
                   privacy&nbsp;policy
-                </a>
+                </Link>
                 .
               </Switch.Label>
             </Switch.Group>

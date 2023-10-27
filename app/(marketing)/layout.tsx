@@ -1,4 +1,3 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -19,16 +18,9 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {/* <HomeNavigator />  */}
-          {children}
-        </ThemeProvider>
+      <body className={`${inter.className}`}> 
+          <HomeNavigator /> 
+          {children} 
      </body>
     </html>
   );

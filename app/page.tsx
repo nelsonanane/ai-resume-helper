@@ -1,27 +1,13 @@
-"use client";
-import React, { useEffect, useRef } from "react"; 
-import ResumeContainer from "./ResumeContainer";
-import { useReactToPrint } from "react-to-print";
+ 
+import React from "react"; 
+import HomeNavigator from "@/components/features/HomeNavigator";
 
-export default function Home() {
-  const componentRef = useRef<any>(); 
+export default function Page() { 
 
-  const handleBeforeContent = () => {
-    if (typeof document !== "undefined") {
-      const img = document.getElementsByTagName("img");
-      console.log(img);
-
-      document.getElementById("image-select")
-        ? (document.getElementById("image-select")!.style.display = "none")
-        : "";
-      console.log("image", img);
-      console.log(document.getElementById("image-select"));
-    }
-  };
-
-  return (
-    <div>
-      <ResumeContainer />
-    </div>
+  return ( 
+      <div className="" style={{backgroundImage: "url('../public/homepage-background')"}}>
+        <HomeNavigator />
+        HOME PAGE | MARKETING PAGE
+      </div>
   );
 }

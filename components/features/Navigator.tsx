@@ -12,13 +12,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { ColorPicker } from "../components/features/ColorPicker";
-import FontInput from "../components/features/FontInput";
-import FontSize from "../components/features/FontSizeToggle";
+import { ColorPicker } from "./ColorPicker";
+import FontInput from "./FontInput";
+import FontSize from "./FontSizeToggle";
 import { PackageOpen } from "lucide-react";
 import { DownloadCloud } from "lucide-react";
 import { Save } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const menuCopyClass = "font-bold text-cyan-700 opacity-70";
 const IconClass = " text-cyan-700 opacity-70";
@@ -63,20 +64,20 @@ const components: { id: number; title: string; component: any }[] = [
   },
 ];
 
-export default function Navigator({ onDownload }: any) {
+const Navigator = ({ onDownload }: any) => {
   return (
     <div className="flex justify-center mt-5 sticky top-0 bg-white z-50">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="cursor-pointer mr-10"> 
-              <a href="/">
+              <Link href="/">
                 <Image
                   src="/QRMLOGO2.jpg"
                   alt="Company logo"
                   width={180}
                   height={61}
                 />
-              </a> 
+              </Link> 
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger className={menuCopyClass}>
@@ -86,7 +87,7 @@ export default function Navigator({ onDownload }: any) {
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
-                    <a
+                    <Link
                       className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                       href="/"
                     >
@@ -103,7 +104,7 @@ export default function Navigator({ onDownload }: any) {
                         Reshape Your Resume, Reshape Your Destiny – Witness the
                         Magic of Success Unfolding.
                       </p>
-                    </a>
+                    </Link>
                   </NavigationMenuLink>
                 </li>
                 <ListItem
@@ -174,7 +175,10 @@ export default function Navigator({ onDownload }: any) {
       </NavigationMenu>
     </div>
   );
-}
+} 
+
+
+export default Navigator;
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -183,7 +187,8 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
+        href={'#'}
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -192,10 +197,10 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
-          </p>
-        </a>
+          </div>
+        </Link>
       </NavigationMenuLink>
     </li>
   )

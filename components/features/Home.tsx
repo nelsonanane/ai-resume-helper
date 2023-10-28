@@ -29,7 +29,7 @@ function Home({}: Props) {
           >
             <Link href={"/resume"}>Start building now</Link>
           </Button>
-          <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center ">
+          <div className="animate-bounce bg-white dark:bg-slate-800 p-2 w-10 h-10 ring-1 ring-slate-900/5 dark:ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center mr-9">
             <svg
               className="w-6 h-6 text-violet-500 rotate-45"
               fill="none"
@@ -43,7 +43,7 @@ function Home({}: Props) {
             </svg>
           </div>
 
-          <h1 className="text-red-400 text-3xl md:text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-24 mr-14 -ml-14 sm:-mt-16">
+          <h1 className="text-red-400 text-3xl md:text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-24 mr-14 sm:mr-0 -ml-14 sm:-mt-16">
             Maker
           </h1>
         </div>

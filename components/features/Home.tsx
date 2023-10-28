@@ -19,7 +19,7 @@ function Home({}: Props) {
         className="h-[calc(100vh-75px)] w-full -z-100 absolute"
         style={{ objectFit: "cover" }}
       />
-      <div className="absolute right-[100px] top-[400px]">
+      <div className="absolute right-[100px] top-28 md:top-[400px]">
         <h1 className="text-orange-50 text-7xl drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans text-right">
           Quick Resume{" "}
         </h1>{" "}

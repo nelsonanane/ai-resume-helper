@@ -18,8 +18,8 @@ function Home({}: Props) {
         className="h-[calc(100vh-75px)] w-full -z-100 absolute"
         style={{ objectFit: "cover" }}
       />
-      <div className="absolute right-[100px] top-[200px] md:top-[400px] w-[500px]">
-        <h1 className="text-orange-50 text-7xl drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans text-right">
+      <div className="absolute right-[100px] top-[100px] md:top-[400px] sm:w-[500px]">
+        <h1 className="text-orange-50 text-5xl md:text-7xl drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans text-right">
           Quick Resume{" "}
         </h1>{" "}
         <div className="flex justify-between items-center ml-16">
@@ -43,7 +43,7 @@ function Home({}: Props) {
             </svg>
           </div>
 
-          <h1 className="text-red-400 text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-16">
+          <h1 className="text-red-400 text-3xl md:text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-16">
             Maker
           </h1>
         </div>

@@ -19,7 +19,7 @@ type Props = {};
 function HomeNavigator({}: Props) {
     
   return (
-    <nav className="flex justify-center mt-5 sticky top-0 bg-white z-50">
+    <nav className="flex justify-center mt-5 sticky top-0 bg-white z-50 mx-5">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem className="cursor-pointer mr-10">

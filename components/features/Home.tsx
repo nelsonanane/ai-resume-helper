@@ -19,10 +19,10 @@ function Home({}: Props) {
         style={{ objectFit: "cover" }}
       />
       <div className="absolute sm:right-[100px] top-[100px] md:top-[400px] sm:w-[500px]">
-        <h1 className="text-orange-50 text-5xl md:text-7xl drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans text-center sm:text-right">
+        <h1 className="text-orange-50 text-5xl md:text-7xl drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans text-center sm:text-right w-[390px] sm:w-[510px]">
           Quick Resume{" "}
         </h1>{" "}
-        <div className="flex justify-between items-center ml-16">
+        <div className="flex justify-between items-center ml-8 sm:ml-16">
           <Button
             className="h-12 w-46 rounded-lg text-lg drop-shadow-[5px_5px_10px_#000000] mt-[100px] "
             asChild
@@ -43,11 +43,11 @@ function Home({}: Props) {
             </svg>
           </div>
 
-          <h1 className="text-red-400 text-3xl md:text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-24 mr-14 sm:-mt-16">
+          <h1 className="text-red-400 text-3xl md:text-5xl text-right drop-shadow-[5px_5px_10px_#000000] body-text font-Font-Sans -mt-24 mr-14 -ml-14 sm:-mt-16">
             Maker
           </h1>
         </div>
-        <p className="text-2xl leading-tight text-white m-12 font-bold drop-shadow">
+        <p className="text-2xl leading-tight text-white mt-12 ml-12 w-[300px] sm:w-[100%] sm:m-12 font-bold drop-shadow">
         <strong className='font-extrabold text-red-200'>Time is Money:</strong> Have a polished resume in seconds, leaving you more time to prepare for interviews and network.
         </p>
       </div>

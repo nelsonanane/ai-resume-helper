@@ -10,8 +10,8 @@ type Props = {};
 
 function page({}: Props) {
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-75px)]">
-      <div className="w-1/2">
+    <div className="sm:flex items-center justify-center h-[calc(100vh-75px)]">
+      <div className="sm:w-1/2 mx-10">
         <h1 className="flex justify-center">- FAQ&apos;s -</h1>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">

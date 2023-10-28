@@ -4,8 +4,8 @@ type Props = {};
 
 function About({}: Props) {
   return (
-    <div className="flex items-center justify-center h-[calc(100vh-75px)]">
-      <div className="w-1/2">
+    <div className="m:flex items-center justify-center h-[calc(100vh-75px)]">
+      <div className="sm:w-1/2 p-10">
       <h1 className="flex justify-center">- About Us -</h1>
       <p>
         We&apos;re passionate about harnessing the power of cutting-edge

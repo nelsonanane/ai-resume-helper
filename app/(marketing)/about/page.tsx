@@ -4,7 +4,7 @@ type Props = {};
 
 function About({}: Props) {
   return (
-    <div className="m:flex items-center justify-center h-[calc(100vh-75px)]">
+    <div className="sm:flex items-center justify-center h-[calc(100vh-75px)]">
       <div className="sm:w-1/2 p-10">
       <h1 className="flex justify-center">- About Us -</h1>
       <p>
